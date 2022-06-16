@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  angular:
+    image: rest-api-exercise-client:1.0.0
+    build: client
+    ports:
+      - 4200:80
+
+  server:
+    image: rest-api-exercise-server:1.0.0
+    build: server
+    ports:
+      - 3000:3000

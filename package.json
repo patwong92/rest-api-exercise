@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  },
+  "name": "rest-api-exercise",
+  "description": "",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "scripts": {
+    "install:all": "concurrently \"npm ci\" \"cd ./client && npm ci\" \"cd ./server && npm ci\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd ./server && npm run start\" \"cd ./client && npm run start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patwong92/rest-api-exercise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patwong92/rest-api-exercise/issues"
+  },
+  "homepage": "https://github.com/patwong92/rest-api-exercise#readme"
+}
