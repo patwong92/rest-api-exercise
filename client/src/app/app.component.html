@@ -1,17 +1,20 @@
 <h1>Coding Exercise</h1>
-<div *ngIf="subscriber$ | async as subscriber">
-  <div>Phone Number: {{ subscriber.phoneNumber }}</div>
-  <div>Username: {{ subscriber.username }}</div>
-  <div>Password: {{ subscriber.password }}</div>
-  <div>Domain: {{ subscriber.domain }}</div>
-  <div>Status: {{ subscriber.status }}</div>
-  <div>
-    Call Forward No Reply Provisioned Status:
-    {{ subscriber.features.callForwardNoReply.provisioned }}
-  </div>
-  <div>
-    Call Forward No Reply Destination Status:{{
-      subscriber.features.callForwardNoReply.destination
-    }}
-  </div>
-</div>
+<div *ngIf="errorMessage.length; else showSubscriber">{{ errorMessage }}</div>
+<ng-template #showSubscriber
+  ><div *ngIf="subscriber$ | async as subscriber">
+    <div>Phone Number: {{ subscriber.phoneNumber }}</div>
+    <div>Username: {{ subscriber.username }}</div>
+    <div>Password: {{ subscriber.password }}</div>
+    <div>Domain: {{ subscriber.domain }}</div>
+    <div>Status: {{ subscriber.status }}</div>
+    <div>
+      Call Forward No Reply Provisioned Status:
+      {{ subscriber.features!.callForwardNoReply!.provisioned }}
+    </div>
+    <div>
+      Call Forward No Reply Destination Status:{{
+        subscriber.features!.callForwardNoReply!.destination
+      }}
+    </div>
+  </div></ng-template
+>

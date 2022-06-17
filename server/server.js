@@ -37,19 +37,24 @@ app.put("/ims/subscriber/:phoneNumber", (req, res) => {
 
   if (subscriberIndex !== -1) {
     data.subscribers[subscriberIndex] = {
-      ...data[subscriberIndex],
+      ...data.subscribers[subscriberIndex],
       ...req.body,
+      phoneNumber,
     };
     fs.writeFileSync("data.json", JSON.stringify(data));
     return res.status(201).send({
-      message: `Created new subscriber with phone number ${phoneNumber}`,
+      message: `Updated phone number ${phoneNumber} information`,
     });
   }
 
-  data.subscribers.push({ ...req.body, phoneNumber });
+  data.subscribers.push({
+    ...data.subscribers[subscriberIndex],
+    ...req.body,
+    phoneNumber,
+  });
   fs.writeFileSync("data.json", JSON.stringify(data));
   return res.status(200).send({
-    message: `Updated subscriber with phone number ${phoneNumber}`,
+    message: `Created new phone number ${phoneNumber}`,
   });
 });
 

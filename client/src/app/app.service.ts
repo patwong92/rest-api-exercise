@@ -1,15 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { environment } from '../environments/environment';
 
 export interface Subscriber {
-  phoneNumber: string;
-  username: string;
-  password: string;
-  domain: string;
-  status: string;
-  features: Features;
+  message?: string;
+  phoneNumber?: string;
+  username?: string;
+  password?: string;
+  domain?: string;
+  status?: string;
+  features?: Features;
 }
 
 export interface Features {
@@ -27,8 +28,7 @@ export class AppService {
 
   getSubscriber$(phoneNumber: number): Observable<Subscriber> {
     return this.http.get<Subscriber>(
-      `${environment.baseApiUrl}/ims/subscriber/${phoneNumber}`,
-      { observe: 'body' }
+      `${environment.baseApiUrl}/ims/subscriber/${phoneNumber}`
     );
   }
 }
