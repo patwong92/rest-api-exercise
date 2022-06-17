@@ -10,3 +10,4 @@
   - This will build the images for the server and the client
 - Run `docker-compose up -d` to start the application
 - To stop the application, run `docker-compose stop`
+  - If you want to stop and remove the client and server containers, run `docker-compose down`
